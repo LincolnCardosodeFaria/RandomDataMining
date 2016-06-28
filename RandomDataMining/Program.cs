@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,7 +79,11 @@ namespace RandomDataMining
 
                 transacao[i] = newTransacao;
             }
-            
+
+            string pah = Path.GetTempPath();
+            string full = pah + "nome.txt";
+            System.IO.File.WriteAllLines(full, transacao.ToList());
+
             Console.ReadKey();
         }
     }

@@ -20,6 +20,8 @@ namespace RandomDataMining
             string[] QualidadeDoSinal = new string[] { "Otimo", "Bom", "Satisfatorio", "Ruim", "Pessimo", "Inexistente"};
             string[] Bateria = new string[] { "0-10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90", "90-100", };
             string[] Horario = new string[] { "7:00-8:00", "8:00-9:00", "9:00-10:00", "10:00-11:00", "11:00-12:00", "12:00-13:00", "13:00-14:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "17:00-18:00", "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00", "22:00-23:00", "23:00-00:00", };
+            string[] CapacidadeDeTransmissaoDoEnlace = new string[] { "10mb", "15mb", "20mb", "25mb", "30mb", "35mb", "40mb", "45mb", "50mb", "55mb", "60mb", "65mb", "70mb", "75mb", "80mb", "85mb", "90mb", "100mb" };
+
 
             string[] transacao = new string[1000] ;
             for (int i = 0; i < 1000; i++)
@@ -77,11 +79,18 @@ namespace RandomDataMining
                     newTransacao += ",";
                 }
 
+              
+                    int utilizacao = random.Next(0, CapacidadeDeTransmissaoDoEnlace.Length);
+                    string ss = CapacidadeDeTransmissaoDoEnlace[utilizacao];
+                    newTransacao += ss;
+                    newTransacao += ",";
+               
+
                 transacao[i] = newTransacao;
             }
 
             string pah = Path.GetTempPath();
-            string full = pah + "nome.txt";
+            string full = pah + "UtilizacaoDaRede.txt";
             System.IO.File.WriteAllLines(full, transacao.ToList());
 
             Console.ReadKey();
